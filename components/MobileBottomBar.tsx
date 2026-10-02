@@ -1,14 +1,37 @@
 'use client';
 
 import { Search, MessageCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function MobileBottomBar() {
+  const [isVisible, setIsVisible] = useState(true);
+
   const handleTrackClick = () => {
     document.getElementById('tracking')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Hide bottom bar when near the bottom to reveal footer
+      if (scrollPosition + windowHeight >= documentHeight - 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-200 p-3">
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-200 p-3 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}
+    >
       <div className="flex gap-3">
         <button
           type="button"

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { Package, Home, Search } from 'lucide-react';
@@ -38,6 +40,7 @@ export default function NotFound() {
               <span>Back to Home</span>
             </Link>
             <button
+              type="button"
               onClick={() => document.getElementById('tracking')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 border border-slate-300 text-brand-primary font-semibold text-sm shadow-glass-sm transition-all duration-200 flex items-center justify-center space-x-2"
             >

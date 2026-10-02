@@ -66,21 +66,23 @@ export default function TrackingPortal() {
 
         {/* Search Box */}
         <div className="mb-8">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-secondary" size={24} />
-            <input
-              type="text"
-              value={trackingCode}
-              onChange={(e) => setTrackingCode(e.target.value.toUpperCase())}
-              onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
-              placeholder="Enter tracking code (e.g., RL-PRC9823 or RL-RNT4102)"
-              className="w-full rounded-2xl bg-white border border-slate-300 focus:border-purple-600 focus:ring-2 focus:ring-purple-200 text-brand-primary placeholder:text-slate-400 p-4 pl-12 font-medium transition-all"
-            />
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-secondary" size={24} />
+              <input
+                type="text"
+                value={trackingCode}
+                onChange={(e) => setTrackingCode(e.target.value.toUpperCase())}
+                onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
+                placeholder="Enter tracking code (e.g., RL-PRC9823 or RL-RNT4102)"
+                className="w-full rounded-2xl bg-white border border-slate-300 focus:border-purple-600 focus:ring-2 focus:ring-purple-200 text-brand-primary placeholder:text-slate-400 p-4 pl-12 font-medium transition-all"
+              />
+            </div>
             <button
               type="button"
               onClick={handleTrack}
               disabled={isLoading}
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold text-sm transition-all disabled:opacity-50"
+              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold text-sm transition-all disabled:opacity-50 whitespace-nowrap"
             >
               {isLoading ? 'Tracking...' : 'Track Status'}
             </button>

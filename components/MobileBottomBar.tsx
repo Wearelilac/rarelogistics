@@ -8,7 +8,7 @@ export default function MobileBottomBar() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/90 backdrop-blur-lg border-t border-slate-200 p-3">
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-200 p-3">
       <div className="flex gap-3">
         <button
           type="button"
